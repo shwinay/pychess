@@ -9,6 +9,7 @@ IMG_SIZE = int(0.90 * TILE_SIZE)
 WHITE = (255, 255, 255)
 GREEN = (118,150,86)
 YELLOW = (204, 237, 0)
+LIGHT_RED = (255, 150, 125)
         
 def in_bounds(i, j) -> bool:
     return i >= 0 and i < NUM_TILES and j >= 0 and j < NUM_TILES

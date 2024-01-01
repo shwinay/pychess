@@ -11,7 +11,7 @@ from util import *
 class Board:
     
     def __init__(self):
-        self.current_move = Side.WHITE
+        self.current_turn = Side.WHITE
         self.grid = self.init_grid() # each square is either Piece, or None
     
     def init_grid(self) -> List[List]:
@@ -20,7 +20,7 @@ class Board:
             ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
             [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
             [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            [' ', ' ', ' ', 'Q', ' ', ' ', ' ', ' '],
             [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
             ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
             ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
@@ -50,6 +50,15 @@ class Board:
             grid.append(row)
 
         return grid
+
+    # TODO akudva error checking
+    def handle_move(self, old_pos: tuple, new_pos: tuple):
+        old_i, old_j = old_pos
+        new_i, new_j = new_pos
+        piece_to_move = self.grid[old_i][old_j]
+        self.grid[old_i][old_j] = None
+        self.grid[new_i][new_j] = piece_to_move
+        self.current_turn = Side.WHITE if self.current_turn == Side.BLACK else Side.BLACK
 
 '''
 TODO notes to implement:

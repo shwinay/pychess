@@ -14,7 +14,7 @@ class King(Piece):
         return 'K' if self.side == Side.BLACK else 'k'
     
     # TODO akudva implement, add rules for reaching end of board, en passant
-    def _get_valid_moves(self, i: int, j: int, grid: List[List]) -> List[tuple]:
+    def get_valid_moves(self, i: int, j: int, grid: List[List]) -> List[tuple]:
         raise NotImplementedError()
     
     def get_piece_type(self):

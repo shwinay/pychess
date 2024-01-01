@@ -12,16 +12,8 @@ class Bishop(Piece):
     def __str__(self):
         return 'B' if self.side == Side.BLACK else 'b'
 
-    def _get_valid_moves(self, i: int, j: int, grid: List[List]) -> List[tuple]:
-        valid_moves = []
-        directions = [(-1, 1), (1, 1), (1, -1), (-1, -1)]
-
-        for i_dir, j_dir in directions:
-            new_i, new_j = (i + i_dir, j + j_dir)
-            while in_bounds(new_i, new_j):
-                if grid[new_i][new_j] is not None:
-                    break
-                valid_moves.append((new_i, new_j))
+    def get_valid_moves(self, i: int, j: int, grid: List[List]) -> List[tuple]:
+        return self.get_directional_valid_moves(i, j, grid, [(-1, 1), (1, 1), (1, -1), (-1, -1)])
     
     def get_piece_type(self):
         return PieceType.BISHOP
